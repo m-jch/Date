@@ -1,0 +1,17 @@
+{
+    "name": "m-jch/date",
+    "description": "Fix all needs to date in php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mohsen shafiei",
+            "email": "mohsen.jch@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Date\\": "src/"
+        }
+    }
+}
