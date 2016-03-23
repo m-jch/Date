@@ -9,6 +9,72 @@ use InvalidArgumentException;
 abstract class DateAbstract extends DateTime
 {
     /**
+     * Return string datetime wherever echo object
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->format('Y/m/d H:i:s');
+    }
+
+    /**
+     * Create an instance object for current datetime
+     *
+     * @param mixed $tz
+     * @return \Date\Jalali|\Date\Date
+     */
+    public static function now($tz = null)
+    {
+        return new static(null, $tz);
+    }
+
+    /**
+     * Create base datetime
+     *
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     * @param string $timezone
+     * @return mixed
+     */
+    public static function create($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
+    {
+        return new static("$year-$month-$day $hour:$minute:$second", $tz);
+    }
+
+    /**
+     * Create base date
+     *
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     * @param string $timezone
+     * @return mixed
+     */
+    public static function createDate($year = null, $month = null, $day = null, $tz = null)
+    {
+        return new static("$year-$month-$day", $tz);
+    }
+
+    /**
+     * Create base time
+     *
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     * @param string $timezone
+     * @return mixed
+     */
+    public static function createTime($hour = null, $minute = null, $second = null, $tz = null)
+    {
+        return new static("$hour:$minute:$second", $tz);
+    }
+
+    /**
     * Creates a DateTimeZone from a string, DateTimeZone or integer offset.
     *
     * @param \DateTimeZone|string|int|null $object

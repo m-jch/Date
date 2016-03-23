@@ -188,47 +188,6 @@ class Jalali extends DateAbstract
     }
 
     /**
-     * Return string datetime wherever echo object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->format('Y/m/d H:i:s');
-    }
-
-    /**
-     * Create an instance object for current datetime
-     *
-     * @param mixed $tz
-     * @return \Date\Jalali
-     */
-    public static function now($tz = null)
-    {
-        return new static(null, $tz);
-    }
-
-    /**
-     * Create base date
-     *
-     * @param int $year
-     * @param int $month
-     * @param int $month
-     * @param int $day
-     * @param int $hour
-     * @param int $minute
-     * @param int $second
-     * @param string $timezone
-     * @return mixed
-     */
-    public static function create($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
-    {
-        list($year, $month, $day) = self::toGregorian($year, $month, $day);
-
-        return new static("$year-$month-$day $hour:$minute:$second", $tz);
-    }
-
-    /**
      * Convert to gregorian date
      *
      * @param int $gYear

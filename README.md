@@ -24,4 +24,8 @@ $date->format('Y-m-d H:i:s');
 echo new Jalali('1395-04-10');
 
 echo Jalali::now();
+
+echo Jalali::create(1394, 05, 04, 12, 45, 23);
+echo Jalali::createDate(1394, 05, 04);
+echo Jalali::createTime(12, 45, 23);
 ```
