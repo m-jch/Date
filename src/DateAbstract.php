@@ -9,6 +9,50 @@ use InvalidArgumentException;
 abstract class DateAbstract extends DateTime
 {
     /**
+     * @return $this
+     */
+    public function startOfDay()
+    {
+        $this->setTime(0, 0, 0);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function endOfDay()
+    {
+        $this->setTime(23, 59, 59);
+
+        return $this;
+    }
+
+    /**
+     * @param int $days
+     * @return $this
+     */
+    public function subDays($days)
+    {
+        $days = (int) $days;
+        $this->modify("-$days day");
+
+        return $this;
+    }
+
+    /**
+     * @param int $days
+     * @return $this
+     */
+    public function addDays($days)
+    {
+        $days = (int) $days;
+        $this->modify("+$days day");
+
+        return $this;
+    }
+
+    /**
      * Return string datetime wherever echo object
      *
      * @return string
@@ -27,6 +71,22 @@ abstract class DateAbstract extends DateTime
     public static function now($tz = null)
     {
         return new static(null, $tz);
+    }
+
+    /**
+     * @return $this
+     */
+    public static function yesterday()
+    {
+        return self::now()->subDays(1);
+    }
+
+    /**
+     * @return $this
+     */
+    public static function tomorrow()
+    {
+        return self::now()->addDays(1);
     }
 
     /**
