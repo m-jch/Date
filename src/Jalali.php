@@ -43,7 +43,7 @@ class Jalali extends DateAbstract
         $this->jMonth = (int) $month;
         $this->jDay = (int) $day;
 
-        list($year, $month, $day) = $this->convertToGregorian($year, $month, $day);
+        list($year, $month, $day) = $this->jalaliToGregorian($year, $month, $day);
         parent::setDate($year, $month, $day);
     }
 
@@ -107,7 +107,7 @@ class Jalali extends DateAbstract
      */
     protected function refreshJalali()
     {
-        list($this->jYear, $this->jMonth, $this->jDay) = $this->convertToJalali(parent::format('Y'), parent::format('m'), parent::format('d'));
+        list($this->jYear, $this->jMonth, $this->jDay) = $this->gregorianToJalali(parent::format('Y'), parent::format('m'), parent::format('d'));
     }
 
     /**
@@ -119,7 +119,7 @@ class Jalali extends DateAbstract
     }
 
     /**
-     * An aliases for toGregorian
+     * An aliases for toGregorian method
      *
      * @return \Date\Date
      */
@@ -185,125 +185,5 @@ class Jalali extends DateAbstract
         }
 
         return $format;
-    }
-
-    /**
-     * Convert to gregorian date
-     *
-     * @param int $gYear
-     * @param int $gMonth
-     * @param int $gDay
-     * @return array
-     *
-     * @source https://github.com/sallar/jDateTime
-     * @author Roozbeh Pournader and Mohammad Toossi
-     */
-    protected static function convertToGregorian($jYear, $jMonth, $jDay)
-    {
-        $gDaysInMonth = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-        $jDaysInMonth = array(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29);
-
-        if (is_null($jYear))
-            $jYear = 1395;
-
-        $jYear = $jYear - 979;
-        $jMonth = $jMonth - 1;
-        $jDay = $jDay - 1;
-        $jDayNo = 365 * $jYear + self::div($jYear, 33) * 8 + self::div($jYear % 33 + 3, 4);
-
-        for ($i = 0; $i < $jMonth; ++$i)
-            $jDayNo += $jDaysInMonth[$i];
-
-        $jDayNo += $jDay;
-        $gDayNo = $jDayNo + 79;
-        $gYear = 1600 + 400 * self::div($gDayNo, 146097);
-        $gDayNo = $gDayNo % 146097;
-        $leap = true;
-
-        if ($gDayNo >= 36525) {
-            $gDayNo--;
-            $gYear += 100 * self::div($gDayNo,  36524);
-            $gDayNo = $gDayNo % 36524;
-            if ($gDayNo >= 365)
-                $gDayNo++;
-            else
-                $leap = false;
-        }
-
-        $gYear += 4 * self::div($gDayNo, 1461);
-        $gDayNo %= 1461;
-
-        if ($gDayNo >= 366) {
-            $leap = false;
-            $gDayNo--;
-            $gYear += self::div($gDayNo, 365);
-            $gDayNo = $gDayNo % 365;
-        }
-
-        for ($i = 0; $gDayNo >= $gDaysInMonth[$i] + ($i == 1 && $leap); $i++)
-            $gDayNo -= $gDaysInMonth[$i] + ($i == 1 && $leap);
-
-        $gMonth = $i + 1;
-        $gDay = $gDayNo + 1;
-
-        return array($gYear, $gMonth, $gDay);
-    }
-
-
-    /**
-     * Convert to jalali date
-     *
-     * @param int $gYear
-     * @param int $gMonth
-     * @param int $gDay
-     * @return array
-     *
-     * @source https://github.com/sallar/jDateTime
-     * @author Roozbeh Pournader and Mohammad Toossi
-     */
-    protected static function convertToJalali($gYear, $gMonth, $gDay)
-    {
-        $gDaysInMonth = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-        $jDaysInMonth = array(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29);
-
-        $gYear = $gYear - 1600;
-        $gMonth = $gMonth - 1;
-        $gDay = $gDay - 1;
-        $gDayNo = 365 * $gYear + self::div($gYear + 3, 4) - self::div($gYear + 99, 100) + self::div($gYear + 399, 400);
-
-        for ($i = 0; $i < $gMonth; ++$i)
-            $gDayNo += $gDaysInMonth[$i];
-
-        if ($gMonth > 1 && (($gYear % 4 == 0 && $gYear % 100 != 0) || ($gYear % 400 == 0)))
-            $gDayNo++;
-
-        $gDayNo += $gDay;
-        $jDayNo = $gDayNo - 79;
-        $jNp = self::div($jDayNo, 12053);
-        $jDayNo = $jDayNo % 12053;
-        $jYear = 979 + 33 * $jNp + 4 * self::div($jDayNo, 1461);
-        $jDayNo %= 1461;
-
-        if ($jDayNo >= 366) {
-            $jYear += self::div($jDayNo - 1, 365);
-            $jDayNo = ($jDayNo - 1) % 365;
-        }
-        for ($i = 0; $i < 11 && $jDayNo >= $jDaysInMonth[$i]; ++$i)
-            $jDayNo -= $jDaysInMonth[$i];
-
-        $jMonth = $i + 1;
-        $jDay = $jDayNo + 1;
-
-        return array($jYear, $jMonth, $jDay);
-    }
-
-    /**
-     * @param int $va1
-     * @param int $va2
-     * @return int
-     */
-    protected static function div($var1, $var2)
-    {
-        return intval($var1 / $var2);
     }
 }
