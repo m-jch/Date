@@ -2,6 +2,12 @@
 
 Fix all needs to date in php
 
+## Install
+
+```
+composer  require m-jch/date:dev-master --prefer-dist
+```
+
 ## Tutorial
 
 This package contains 2 class, ```Jalali``` and ```Date```. ```Jalali``` class responsible for Jalali (shamsi) date time and ```Date``` class responsible for Gregorian date time.
