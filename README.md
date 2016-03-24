@@ -66,10 +66,16 @@ echo Jalali::now()->addDays(1);
 echo Jalali::now()->subDays(5);
 ```
 
+#### Customize
+
+```php
+// echo as farsi numbers
+echo Jalali::now()->fa();
+echo (new Jalali)->addDays(5)->fa()->format('Y-m-d l');
+```
+
 ## Road map
 
-* Support persian numeric
 * Complete date formats
 * Add diff methods such as ```diffInDay``` or ```greater```
-* Create ```subDays``` and ```addDays``` methods as instance creator from now
 * Add Laravel 4 and 5 providers

@@ -18,6 +18,12 @@ class Jalali extends DateAbstract
     const SATURDAY  = 6;
 
     /**
+     * Output formats
+     */
+    const EN = 0;
+    const FA = 1;
+
+    /**
      * @var int
      */
     protected $jYear;
@@ -31,6 +37,11 @@ class Jalali extends DateAbstract
      * @var int
      */
     protected $jDay;
+
+    /**
+     * @var int
+     */
+    protected $outputFormat = self::EN;
 
     /**
      * Day names based on l symobl
@@ -206,7 +217,36 @@ class Jalali extends DateAbstract
             $format = preg_replace("/$symbol/", $v, $format);
         }
 
+        if ($this->outputFormat == self::FA)
+            return $this->inFa($format);
+
         return $format;
+    }
+
+    /**
+     * Set output format to fa
+     *
+     * @return $this
+     */
+    public function fa()
+    {
+        $this->outputFormat = self::FA;
+
+        return $this;
+    }
+
+    /**
+     * Convert english numbers to farsi
+     *
+     * @param string $text
+     * @return string
+     */
+    protected function inFa($text)
+    {
+        $farsiNumbers   = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+        $englishNumbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+
+        return str_replace($englishNumbers, $farsiNumbers, $text);
     }
 
     /**
