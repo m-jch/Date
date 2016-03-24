@@ -70,3 +70,5 @@ echo Jalali::now()->subDays(5);
 
 * Support persian numeric
 * Complete date formats
+* Add diff methods such as ```diffInDay``` or ```greater```
+* Create ```subDays``` and ```addDays``` methods as instance creator from now
