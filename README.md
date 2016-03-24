@@ -73,7 +73,7 @@ echo Jalali::now()->subDays(5);
 ```php
 // echo as farsi numbers
 echo Jalali::now()->fa()->subDays(4);
-echo (new Jalali)->addDays(5)->fa('Y-m-d l'); // Can use just ```fa()``` instead of ```fa()->format()```
+echo (new Jalali)->addDays(5)->fa('Y-m-d l'); // Can use just fa() instead of fa()->format()
 ```
 
 ## Road map

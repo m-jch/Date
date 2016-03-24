@@ -46,16 +46,30 @@ class Jalali extends DateAbstract
     /**
      * Day names based on l symobl
      *
-     * @param array
+     * @var array
      */
     protected $format_l = array(self::SUNDAY => 'یکشنبه', self::MONDAY => 'دوشنبه', self::TUESDAY => 'سه‌شنبه', self::WEDNESDAY => 'چهارشنبه', self::THURSDAY => 'پنج‌شنبه', self::FRIDAY => 'جمعه', self::SATURDAY => 'شنبه');
 
     /**
      * Day names based on D symobl
      *
-     * @param array
+     * @var array
      */
     protected $format_D = array(self::SUNDAY => 'یکش', self::MONDAY => 'دوش', self::TUESDAY => 'سشن', self::WEDNESDAY => 'چها', self::THURSDAY => 'پنج', self::FRIDAY => 'جمع', self::SATURDAY => 'شنب');
+
+    /**
+     * Month names
+     *
+     * @var array
+     */
+    protected $format_F = array('فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند');
+
+    /**
+     * Month names
+     *
+     * @var array
+     */
+    protected $format_M = array('فرو', 'ارد', 'خرد', 'تیر', 'مرد', 'شهر', 'مهر', 'آبا', 'آذر', 'دی', 'بهم', 'اسف');
 
     /**
      * @param string|null $time
@@ -189,8 +203,8 @@ class Jalali extends DateAbstract
      */
     public function format($format)
     {
-        $symbols = array('Y', 'm', 'd', 'H', 'i', 's', 'l', 'D');
-        $intactSymbols = array('H', 'i', 's');
+        $symbols = array('Y', 'm', 'd', 'D', 'H', 'i', 's', 'l', 'j', 'N', 'w', 'z', 'W', 'F', 'M', 'n');
+        $intactSymbols = array('H', 'i', 's', 'N', 'w');
 
         $findSymbolsRegex = '/('.implode('|', $symbols).')(-|:|\s|\d|\z|\/)/';
         $symbols = preg_match_all($findSymbolsRegex, $format, $symbols) ? $symbols[1] : array();
@@ -218,6 +232,30 @@ class Jalali extends DateAbstract
                     $v = $this->format_l[parent::format('w')];
                     break;
 
+                case 'j':
+                    $v = sprintf('%01d', $this->jMonth);
+                    break;
+
+                case 'z':
+                    $v = $this->dayOfYear();
+                    break;
+
+                case 'W':
+                    $v = $this->weekOfYear();
+                    break;
+
+                case 'F':
+                    $v = $this->format_F[$this->jMonth - 1];
+                    break;
+
+                case 'M':
+                    $v = $this->format_M[$this->jMonth - 1];
+                    break;
+
+                case 'n':
+                    $v = sprintf('%01d', $this->jMonth);
+                    break;
+
                 default:
                     if (in_array($symbol, $intactSymbols)) {
                         $v = parent::format($symbol);
@@ -232,6 +270,36 @@ class Jalali extends DateAbstract
             return $this->inFa($format);
 
         return $format;
+    }
+
+    /**
+     * Return day of year
+     *
+     * @return int
+     */
+    protected function dayOfYear()
+    {
+        if ($this->jMonth > 6) {
+            return 186 + (($this->jMonth - 6 - 1) * 30) + $this->jDay;
+        }
+        else {
+            return (($this->jMonth - 1) * 31) + $this->jDay;
+        }
+    }
+
+    /**
+     * Return week of year
+     *
+     * @return int
+     */
+    protected function weekOfYear()
+    {
+        $dayOfYear = $this->dayOfYear();
+        if (is_int($dayOfYear / 7)) {
+            return $dayOfYear / 7;
+        } else {
+            return intval($dayOfYear / 7) + 1;
+        }
     }
 
     /**
