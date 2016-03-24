@@ -65,3 +65,11 @@ echo Jalali::now()->endOfDay();
 echo Jalali::now()->addDays(1);
 echo Jalali::now()->subDays(5);
 ```
+
+## Road map
+
+* Support persian numeric
+* Complete date formats
+* Add diff methods such as ```diffInDay``` or ```greater```
+* Create ```subDays``` and ```addDays``` methods as instance creator from now
+* Add Laravel 4 and 5 providers
