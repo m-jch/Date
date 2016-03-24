@@ -7,6 +7,17 @@ use DateTime;
 class Jalali extends DateAbstract
 {
     /**
+     * Names of the days of the week
+     */
+    const SUNDAY    = 0;
+    const MONDAY    = 1;
+    const TUESDAY   = 2;
+    const WEDNESDAY = 3;
+    const THURSDAY  = 4;
+    const FRIDAY    = 5;
+    const SATURDAY  = 6;
+
+    /**
      * @var int
      */
     protected $jYear;
@@ -20,6 +31,13 @@ class Jalali extends DateAbstract
      * @var int
      */
     protected $jDay;
+
+    /**
+     * Day names based on l symobl
+     *
+     * @param array
+     */
+    protected $format_l = array(self::SUNDAY => 'یکشنبه', self::MONDAY => 'دوشنبه', self::TUESDAY => 'سه‌شنبه', self::WEDNESDAY => 'چهارشنبه', self::THURSDAY => 'پنج‌شنبه', self::FRIDAY => 'جمعه', self::SATURDAY => 'شنبه');
 
     /**
      * @param string|null $time
@@ -153,7 +171,7 @@ class Jalali extends DateAbstract
      */
     public function format($format)
     {
-        $symbols = array('Y', 'm', 'd', 'H', 'i', 's');
+        $symbols = array('Y', 'm', 'd', 'H', 'i', 's', 'l');
         $intactSymbols = array('H', 'i', 's');
 
         $findSymbolsRegex = '/('.implode('|', $symbols).')(-|:|\s|\d|\z|\/)/';
@@ -172,6 +190,10 @@ class Jalali extends DateAbstract
 
                 case 'd':
                     $v = sprintf('%02d', $this->jDay);
+                    break;
+
+                case 'l':
+                    $v = $this->format_l[parent::format('w')];
                     break;
 
                 default:
