@@ -65,3 +65,8 @@ echo Jalali::now()->endOfDay();
 echo Jalali::now()->addDays(1);
 echo Jalali::now()->subDays(5);
 ```
+
+## Road map
+
+* Support persian numeric
+* Complete date formats
