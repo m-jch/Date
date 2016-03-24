@@ -72,3 +72,4 @@ echo Jalali::now()->subDays(5);
 * Complete date formats
 * Add diff methods such as ```diffInDay``` or ```greater```
 * Create ```subDays``` and ```addDays``` methods as instance creator from now
+* Add Laravel 4 and 5 providers
