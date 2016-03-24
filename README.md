@@ -43,12 +43,14 @@ echo Jalali::createTime(12, 45, 23);
 #### Converters
 
 ```php
+// Jalali to Gregorian
 $date = new Jalali('1373/06/05 23:10:05');
 echo $date->toGregorian();
 
 $date = new Jalali('1373/06/05 23:10:05');
 echo $date->tog(); // An aliases for toGregorian method
 
+// Gregorian to Jalali
 $date = new Date('2012-06-05 20:05:01');
 echo $date->toJalali();
 
@@ -70,8 +72,8 @@ echo Jalali::now()->subDays(5);
 
 ```php
 // echo as farsi numbers
-echo Jalali::now()->fa();
-echo (new Jalali)->addDays(5)->fa()->format('Y-m-d l');
+echo Jalali::now()->fa()->subDays(4);
+echo (new Jalali)->addDays(5)->fa('Y-m-d l'); // Can use just ```fa()``` instead of ```fa()->format()```
 ```
 
 ## Road map

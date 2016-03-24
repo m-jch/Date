@@ -51,6 +51,13 @@ class Jalali extends DateAbstract
     protected $format_l = array(self::SUNDAY => 'یکشنبه', self::MONDAY => 'دوشنبه', self::TUESDAY => 'سه‌شنبه', self::WEDNESDAY => 'چهارشنبه', self::THURSDAY => 'پنج‌شنبه', self::FRIDAY => 'جمعه', self::SATURDAY => 'شنبه');
 
     /**
+     * Day names based on D symobl
+     *
+     * @param array
+     */
+    protected $format_D = array(self::SUNDAY => 'یکش', self::MONDAY => 'دوش', self::TUESDAY => 'سشن', self::WEDNESDAY => 'چها', self::THURSDAY => 'پنج', self::FRIDAY => 'جمع', self::SATURDAY => 'شنب');
+
+    /**
      * @param string|null $time
      * @param mixed $tz
      */
@@ -182,7 +189,7 @@ class Jalali extends DateAbstract
      */
     public function format($format)
     {
-        $symbols = array('Y', 'm', 'd', 'H', 'i', 's', 'l');
+        $symbols = array('Y', 'm', 'd', 'H', 'i', 's', 'l', 'D');
         $intactSymbols = array('H', 'i', 's');
 
         $findSymbolsRegex = '/('.implode('|', $symbols).')(-|:|\s|\d|\z|\/)/';
@@ -201,6 +208,10 @@ class Jalali extends DateAbstract
 
                 case 'd':
                     $v = sprintf('%02d', $this->jDay);
+                    break;
+
+                case 'D':
+                    $v = $this->format_D[parent::format('w')];
                     break;
 
                 case 'l':
@@ -228,11 +239,13 @@ class Jalali extends DateAbstract
      *
      * @return $this
      */
-    public function fa()
+    public function fa($format = null)
     {
         $this->outputFormat = self::FA;
 
-        return $this;
+        if (is_null($format)) return $this;
+
+        return $this->format($format);
     }
 
     /**
