@@ -9,6 +9,13 @@ use InvalidArgumentException;
 abstract class DateAbstract extends DateTime
 {
     /**
+     * Check Jalali year is leap or not
+     *
+     * @var int
+     */
+    protected $leap;
+
+    /**
      * @return $this
      */
     public function startOfDay()
@@ -179,13 +186,10 @@ abstract class DateAbstract extends DateTime
     * @source https://github.com/sallar/jDateTime
     * @author Roozbeh Pournader and Mohammad Toossi
     */
-   protected static function jalaliToGregorian($jYear, $jMonth, $jDay)
+   protected function jalaliToGregorian($jYear, $jMonth, $jDay)
    {
        $gDaysInMonth = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
        $jDaysInMonth = array(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29);
-
-       if (is_null($jYear))
-           $jYear = 1395;
 
        $jYear = $jYear - 979;
        $jMonth = $jMonth - 1;
@@ -199,7 +203,7 @@ abstract class DateAbstract extends DateTime
        $gDayNo = $jDayNo + 79;
        $gYear = 1600 + 400 * self::div($gDayNo, 146097);
        $gDayNo = $gDayNo % 146097;
-       $leap = true;
+       $this->leap = true;
 
        if ($gDayNo >= 36525) {
            $gDayNo--;
@@ -208,21 +212,21 @@ abstract class DateAbstract extends DateTime
            if ($gDayNo >= 365)
                $gDayNo++;
            else
-               $leap = false;
+               $this->leap = false;
        }
 
        $gYear += 4 * self::div($gDayNo, 1461);
        $gDayNo %= 1461;
 
        if ($gDayNo >= 366) {
-           $leap = false;
+           $this->leap = false;
            $gDayNo--;
            $gYear += self::div($gDayNo, 365);
            $gDayNo = $gDayNo % 365;
        }
 
-       for ($i = 0; $gDayNo >= $gDaysInMonth[$i] + ($i == 1 && $leap); $i++)
-           $gDayNo -= $gDaysInMonth[$i] + ($i == 1 && $leap);
+       for ($i = 0; $gDayNo >= $gDaysInMonth[$i] + ($i == 1 && $this->leap); $i++)
+           $gDayNo -= $gDaysInMonth[$i] + ($i == 1 && $this->leap);
 
        $gMonth = $i + 1;
        $gDay = $gDayNo + 1;
@@ -242,7 +246,7 @@ abstract class DateAbstract extends DateTime
     * @source https://github.com/sallar/jDateTime
     * @author Roozbeh Pournader and Mohammad Toossi
     */
-   public static function gregorianToJalali($gYear, $gMonth, $gDay)
+   public function gregorianToJalali($gYear, $gMonth, $gDay)
    {
        $gDaysInMonth = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
        $jDaysInMonth = array(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29);

@@ -14,6 +14,8 @@ This package contains 2 class, ```Jalali``` and ```Date```. ```Jalali``` class r
 
 All below examples should be run in ```Jalali``` or ```Date``` class.
 
+All format listed in PHP ```date``` function support.
+
 ### Include Classes
 
 ```php
@@ -78,6 +80,5 @@ echo (new Jalali)->addDays(5)->fa('Y-m-d l'); // Can use just fa() instead of fa
 
 ## Road map
 
-* Complete date formats
 * Add diff methods such as ```diffInDay``` or ```greater```
 * Add Laravel 4 and 5 providers

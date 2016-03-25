@@ -203,8 +203,8 @@ class Jalali extends DateAbstract
      */
     public function format($format)
     {
-        $symbols = array('Y', 'm', 'd', 'D', 'H', 'i', 's', 'l', 'j', 'N', 'w', 'z', 'W', 'F', 'M', 'n');
-        $intactSymbols = array('H', 'i', 's', 'N', 'w');
+        $symbols = array('Y', 'm', 'd', 'D', 'H', 'i', 's', 'l', 'j', 'N', 'w', 'z', 'W', 'F', 'M', 'n', 't', 'L', 'o', 'y', 'a', 'A', 'B', 'g', 'G', 'h', 's', 'u', 'e', 'i', 'I', 'O', 'P', 'T', 'U', 'c', 'r');
+        $intactSymbols = array('H', 'i', 's', 'N', 'w', 'B', 'g', 'G', 'h', 's', 'u', 'e', 'i', 'I', 'O', 'P', 'T', 'U', 'c', 'r');
 
         $findSymbolsRegex = '/('.implode('|', $symbols).')(-|:|\s|\d|\z|\/)/';
         $symbols = preg_match_all($findSymbolsRegex, $format, $symbols) ? $symbols[1] : array();
@@ -214,6 +214,10 @@ class Jalali extends DateAbstract
             switch ($symbol) {
                 case 'Y':
                     $v = sprintf('%04d', $this->jYear);
+                    break;
+
+                case 'y':
+                    $v = $this->jYear % 100;
                     break;
 
                 case 'm':
@@ -254,6 +258,28 @@ class Jalali extends DateAbstract
 
                 case 'n':
                     $v = sprintf('%01d', $this->jMonth);
+                    break;
+
+                case 't':
+                    if ($this->jMonth < 7) $v = 31;
+                    elseif ($this->jMonth == 12 || $this->leap) $v = 30;
+                    else $v = 29;
+                    break;
+
+                case 'L':
+                    $v = (int) $this->leap;
+                    break;
+
+                case 'o':
+                    $v = $this->jYear;
+                    break;
+
+                case 'a':
+                    $v = parent::format('H') > 12 ? 'ب.ظ' : 'ق.ظ';
+                    break;
+
+                case 'A':
+                    $v = parent::format('H') > 12 ? 'بعد از ظهر' : 'قبل از ظهر';
                     break;
 
                 default:
