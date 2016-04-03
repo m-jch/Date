@@ -14,7 +14,7 @@ This package contains 2 class, ```Jalali``` and ```Date```. ```Jalali``` class r
 
 All below examples should be run in ```Jalali``` or ```Date``` class.
 
-All format listed in PHP ```date``` function support.
+All format listed in PHP [```date```](http://php.net/manual/en/function.date.php) function support.
 
 ### Include Classes
 

@@ -176,6 +176,20 @@ abstract class DateAbstract extends DateTime
    }
 
    /**
+    * Convert english numbers to farsi
+    *
+    * @param string $text
+    * @return string
+    */
+   public static function inFa($text)
+   {
+       $farsiNumbers   = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+       $englishNumbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+
+       return str_replace($englishNumbers, $farsiNumbers, $text);
+   }
+
+   /**
     * Convert jalali to gregorian date
     *
     * @param int $gYear
