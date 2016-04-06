@@ -107,7 +107,17 @@ $date1->lessThanOrEqualTo($date2);
 $date1->lte($date2);
 ```
 
+## Frameworks
+
+### Laravel5
+
+Add below codes to ```aliases``` array in ```app.php``` config file.
+
+```php
+'Jalali' => Date\Jalali::class,
+'Date'   => Date\Date::class
+```
+
 ## Road map
 
-* Add diff methods such as ```diffInDay``` or ```greater```
-* Add Laravel 4 and 5 providers
+* Add diff methods such as ```diffInDay```
