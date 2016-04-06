@@ -16,6 +16,8 @@ All below examples should be run in ```Jalali``` or ```Date``` class.
 
 All format listed in PHP [```date```](http://php.net/manual/en/function.date.php) function support.
 
+We want to implements most of Carbon PHP class.
+
 ### Include Classes
 
 ```php
@@ -76,6 +78,33 @@ echo Jalali::now()->subDays(5);
 // echo as farsi numbers
 echo Jalali::now()->fa()->subDays(4);
 echo (new Jalali)->addDays(5)->fa('Y-m-d l'); // Can use just fa() instead of fa()->format()
+```
+
+### Comparisons
+
+All comparisons based on Gregorian date, so you can compare two date with different type of class.
+
+```php
+$date1 = new Jalali('1395-07-12');
+$date2 = new Jalali('1395-10-05');
+
+$date1->equalTo($date2);
+$date1->eq($date2);
+
+$date1->notEqualTo($date2);
+$date1->ne($date2);
+
+$date1->greaterThan($date2);
+$date1->gt($date2);
+
+$date1->greaterThanOrEqualTo($date2);
+$date1->gte($date2);
+
+$date1->lessThan($date2);
+$date1->lt($date2);
+
+$date1->lessThanOrEqualTo($date2);
+$date1->lte($date2);
 ```
 
 ## Road map

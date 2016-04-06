@@ -16,6 +16,151 @@ abstract class DateAbstract extends DateTime
     protected $leap;
 
     /**
+     * Determines if the instance is equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @return bool
+     */
+    public function eq(DateAbstract $dt)
+    {
+        return $this == $dt;
+    }
+    /**
+     * Determines if the instance is equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @see eq()
+     *
+     * @return bool
+     */
+    public function equalTo(DateAbstract $dt)
+    {
+        return $this->eq($dt);
+    }
+    /**
+     * Determines if the instance is not equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @return bool
+     */
+    public function ne(DateAbstract $dt)
+    {
+        return !$this->eq($dt);
+    }
+    /**
+     * Determines if the instance is not equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @see ne()
+     *
+     * @return bool
+     */
+    public function notEqualTo(DateAbstract $dt)
+    {
+        return $this->ne($dt);
+    }
+    /**
+     * Determines if the instance is greater (after) than another
+     *
+     * @param DateAbstract $dt
+     *
+     * @return bool
+     */
+    public function gt(DateAbstract $dt)
+    {
+        return $this > $dt;
+    }
+    /**
+     * Determines if the instance is greater (after) than another
+     *
+     * @param DateAbstract $dt
+     *
+     * @see gt()
+     *
+     * @return bool
+     */
+    public function greaterThan(DateAbstract $dt)
+    {
+        return $this->gt($dt);
+    }
+    /**
+     * Determines if the instance is greater (after) than or equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @return bool
+     */
+    public function gte(DateAbstract $dt)
+    {
+        return $this >= $dt;
+    }
+    /**
+     * Determines if the instance is greater (after) than or equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @see gte()
+     *
+     * @return bool
+     */
+    public function greaterThanOrEqualTo(DateAbstract $dt)
+    {
+        return $this->gte($dt);
+    }
+    /**
+     * Determines if the instance is less (before) than another
+     *
+     * @param DateAbstract $dt
+     *
+     * @return bool
+     */
+    public function lt(DateAbstract $dt)
+    {
+        return $this < $dt;
+    }
+    /**
+     * Determines if the instance is less (before) than another
+     *
+     * @param DateAbstract $dt
+     *
+     * @see lt()
+     *
+     * @return bool
+     */
+    public function lessThan(DateAbstract $dt)
+    {
+        return $this->lt($dt);
+    }
+    /**
+     * Determines if the instance is less (before) or equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @return bool
+     */
+    public function lte(DateAbstract $dt)
+    {
+        return $this <= $dt;
+    }
+    /**
+     * Determines if the instance is less (before) or equal to another
+     *
+     * @param DateAbstract $dt
+     *
+     * @see lte()
+     *
+     * @return bool
+     */
+    public function lessThanOrEqualTo(DateAbstract $dt)
+    {
+        return $this->lte($dt);
+    }
+
+    /**
      * @return $this
      */
     public function startOfDay()
@@ -149,7 +294,7 @@ abstract class DateAbstract extends DateTime
     *
     * @throws InvalidArgumentException
     *
-    * @source https://github.com/briannesbitt/Carbon
+    * @source https://github.com/briannesbitt/DateAbstract
     */
    protected static function safeCreateDateTimeZone($object)
    {
