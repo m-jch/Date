@@ -326,12 +326,26 @@ abstract class DateAbstract extends DateTime
     * @param string $text
     * @return string
     */
-   public static function inFa($text)
+   public static function enToFa($text)
    {
        $farsiNumbers   = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
        $englishNumbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
 
        return str_replace($englishNumbers, $farsiNumbers, $text);
+   }
+
+   /**
+    * Convert farsi numbers to english
+    *
+    * @param string $text
+    * @return string
+    */
+   public static function faToEn($text)
+   {
+       $farsiNumbers   = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+       $englishNumbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+
+       return str_replace($farsiNumbers, $englishNumbers, $text);
    }
 
    /**

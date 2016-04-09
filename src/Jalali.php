@@ -78,7 +78,7 @@ class Jalali extends DateAbstract
     public function __construct($time = null, $tz = null)
     {
         parent::__construct(null, self::safeCreateDateTimeZone($tz));
-        $this->decode($time);
+        $this->decode($this->faToEn($time));
     }
 
     /**
@@ -293,7 +293,7 @@ class Jalali extends DateAbstract
         }
 
         if ($this->outputFormat == self::FA)
-            return $this->inFa($format);
+            return $this->enToFa($format);
 
         return $format;
     }
