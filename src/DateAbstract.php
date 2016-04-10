@@ -240,6 +240,28 @@ abstract class DateAbstract extends DateTime
 
         return $this;
     }
+    
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function subHours($value = 1)
+    {
+        $this->addHours(-1 * $value);
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addHours($value = 1)
+    {
+        $this->modify((int) $value.' hour');
+
+        return $this;
+    }
 
     /**
      * @param int $value
@@ -259,28 +281,6 @@ abstract class DateAbstract extends DateTime
     public function addMinutes($value = 1)
     {
         $this->modify((int) $value.' minute');
-
-        return $this;
-    }
-
-    /**
-     * @param int $value
-     * @return $this
-     */
-    public function subHours($value = 1)
-    {
-        $this->addHours(-1 * $value);
-
-        return $this;
-    }
-
-    /**
-     * @param int $value
-     * @return $this
-     */
-    public function addHours($value = 1)
-    {
-        $this->modify((int) $value.' hour');
 
         return $this;
     }
