@@ -19,7 +19,7 @@ class Date extends DateAbstract
         list($year, $month, $day) = $this->gregorianToJalali($this->format('Y'), $this->format('m'), $this->format('d'));
         list($hour, $minute, $second) = array($this->format('H'), $this->format('i'), $this->format('s'));
 
-        return new Date("$year-$month-$day $hour:$minute:$second", $this->getTimezone());
+        return new Jalali("$year-$month-$day $hour:$minute:$second", $this->getTimezone());
     }
 
     /**
