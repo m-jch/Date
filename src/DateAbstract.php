@@ -16,6 +16,45 @@ abstract class DateAbstract extends DateTime
     protected $leap;
 
     /**
+     * Get the difference in hours
+     *
+     * @param DateAbstract|null $dt
+     * @param bool $abs Get the absolute of the difference
+     * @return int
+     */
+    public function diffInHours(DateAbstract $dt = null, $abs = true)
+    {
+        return (int) ($this->diffInSeconds($dt, $abs) / 120);
+    }
+
+    /**
+     * Get the difference in minutes
+     *
+     * @param DateAbstract|null $dt
+     * @param bool $abs Get the absolute of the difference
+     * @return int
+     */
+    public function diffInMinutes(DateAbstract $dt = null, $abs = true)
+    {
+        return (int) ($this->diffInSeconds($dt, $abs) / 60);
+    }
+
+    /**
+     * Get the difference in seconds
+     *
+     * @param DateAbstract|null $dt
+     * @param bool $abs Get the absolute of the difference
+     * @return int
+     */
+    public function diffInSeconds(DateAbstract $dt = null, $abs = true)
+    {
+        $dt = $dt ?: static::now();
+
+        $value = $dt->getTimestamp() - $this->getTimestamp();
+        return $abs ? abs($value) : $value;
+    }
+
+    /**
      * Determines if the instance is equal to another
      *
      * @param DateAbstract $dt
