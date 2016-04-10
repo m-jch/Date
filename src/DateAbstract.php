@@ -220,25 +220,45 @@ abstract class DateAbstract extends DateTime
     }
 
     /**
-     * @param int $days
+     * @param int $value
      * @return $this
      */
-    public function subDays($days)
+    public function subDays($value = 1)
     {
-        $days = (int) $days;
-        $this->modify("-$days day");
+        $this->addDays(-1 * $value);
 
         return $this;
     }
 
     /**
-     * @param int $days
+     * @param int $value
      * @return $this
      */
-    public function addDays($days)
+    public function addDays($value = 1)
     {
-        $days = (int) $days;
-        $this->modify("+$days day");
+        $this->modify((int) $value." day");
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function subMinutes($value = 1)
+    {
+        $this->addMinutes(-1 * $value);
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addMinutes($value = 1)
+    {
+        $this->modify((int) $value.' minute');
 
         return $this;
     }

@@ -343,24 +343,48 @@ class Jalali extends DateAbstract
     }
 
     /**
-     * @param int $days
+     * @param int $value
      * @return $this
      */
-    public function subDays($days)
+    public function subDays($value = 1)
     {
-        parent::subDays($days);
+        parent::subDays($value);
         $this->refreshJalali();
 
         return $this;
     }
 
     /**
-     * @param int $days
+     * @param int $value
      * @return $this
      */
-    public function addDays($days)
+    public function addDays($value = 1)
     {
-        parent::addDays($days);
+        parent::addDays($value);
+        $this->refreshJalali();
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function subMinutes($value = 1)
+    {
+        parent::subMinutes($value);
+        $this->refreshJalali();
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addMinutes($value = 1)
+    {
+        parent::addMinutes($value);
         $this->refreshJalali();
 
         return $this;

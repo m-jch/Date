@@ -70,6 +70,9 @@ echo Jalali::now()->endOfDay();
 
 echo Jalali::now()->addDays(1);
 echo Jalali::now()->subDays(5);
+
+echo Jalali::now()->addMinutes(1);
+echo Jalali::now()->subMinutes(5);
 ```
 
 #### Customize
@@ -80,7 +83,7 @@ echo Jalali::now()->fa()->subDays(4);
 echo (new Jalali)->addDays(5)->fa('Y-m-d l'); // Can use just fa() instead of fa()->format()
 ```
 
-### Comparisons
+#### Comparisons
 
 All comparisons based on Gregorian date, so you can compare two date with different type of class.
 
@@ -105,6 +108,15 @@ $date1->lt($date2);
 
 $date1->lessThanOrEqualTo($date2);
 $date1->lte($date2);
+```
+
+#### Differences
+
+```php
+// If second parameter is true, return base on absolute, otherwise base on difference, default is true
+$date1->diffInHours($date2);
+$date1->diffInMinutes($date2, true);
+$date1->diffInSeconds($date2, false);
 ```
 
 ## Frameworks
