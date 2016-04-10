@@ -264,6 +264,28 @@ abstract class DateAbstract extends DateTime
     }
 
     /**
+     * @param int $value
+     * @return $this
+     */
+    public function subSeconds($value = 1)
+    {
+        $this->addSeconds(-1 * $value);
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addSeconds($value = 1)
+    {
+        $this->modify((int) $value.' second');
+
+        return $this;
+    }
+
+    /**
      * Return string datetime wherever echo object
      *
      * @return string

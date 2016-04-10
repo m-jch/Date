@@ -389,4 +389,28 @@ class Jalali extends DateAbstract
 
         return $this;
     }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function subSeconds($value = 1)
+    {
+        parent::subSeconds($value);
+        $this->refreshJalali();
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addSeconds($value = 1)
+    {
+        parent::addSeconds($value);
+        $this->refreshJalali();
+
+        return $this;
+    }
 }
