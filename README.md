@@ -73,6 +73,9 @@ echo Jalali::now()->endOfDay();
 echo Jalali::now()->addDays(1);
 echo Jalali::now()->subDays(5);
 
+echo Jalali::now()->addHours(2);
+echo Jalali::now()->subHours(1);
+
 echo Jalali::now()->addMinutes(10);
 echo Jalali::now()->subMinutes(5);
 
