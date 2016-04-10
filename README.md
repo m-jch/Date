@@ -68,7 +68,7 @@ echo $date->toj(); // An aliases for toJalali method
 echo Jalali::now()->startOfDay();
 echo Jalali::now()->endOfDay();
 
-// Consider you can send negative number too ```add*``` methods, instead of using ```sub*``` methods.
+// Consider you can send negative number to ```add*``` methods, instead of using ```sub*``` methods.
 echo Jalali::now()->addDays(1);
 echo Jalali::now()->subDays(5);
 
