@@ -31,6 +31,7 @@ use Date\Jalali;
 
 ```php
 $date = new Jalali('1395/04/10 23:10:05');
+$date = new Jalali('۱۳۹۵/۰۴/۱۰ ۲۳:۱۰:۰۵');
 $date->format('Y-m-d H:i:s');
 
 echo new Jalali('1395-04-10');
@@ -52,7 +53,7 @@ $date = new Jalali('1373/06/05 23:10:05');
 echo $date->toGregorian();
 
 $date = new Jalali('1373/06/05 23:10:05');
-echo $date->tog(); // An aliases for toGregorian method
+echo $date->tog()->format('Y-m'); // An aliases for toGregorian method
 
 // Gregorian to Jalali
 $date = new Date('2012-06-05 20:05:01');
