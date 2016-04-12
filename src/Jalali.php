@@ -107,8 +107,8 @@ class Jalali extends DateAbstract
     */
     protected function decode($time)
     {
-        $datetimeDetailRegex = '/(\d{1,4})[\/|-](\d{1,2})[\/|-](\d{1,2})\s(\d{1,2}):(\d{1,2}):(\d{1,2})/';
-        $datetimeRegex = '/(\d{4})[\/|-](\d{1,2})[\/|-](\d{1,2})\s(\d{1,2}):(\d{1,2})/';
+        $datetimeDetailRegex = '/(\d{1,4})[\/|-](\d{1,2})[\/|-](\d{1,2})\s*(\d{1,2}):(\d{1,2}):(\d{1,2})/';
+        $datetimeRegex = '/(\d{4})[\/|-](\d{1,2})[\/|-](\d{1,2})\s*(\d{1,2}):(\d{1,2})/';
         $dateRegex = '/(\d{1,4})[\/|-](\d{1,2})[\/|-](\d{1,2})/';
         $timeDetailRegex = '/(\d{1,2}):(\d{1,2}):(\d{1,2})/';
         $timeRegex = '/(\d{1,2}):(\d{1,2})/';
