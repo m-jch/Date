@@ -71,6 +71,12 @@ Consider you can send negative number to ```add*``` methods, instead of using ``
 echo Jalali::now()->startOfDay();
 echo Jalali::now()->endOfDay();
 
+echo Jalali::now()->addYears(2);
+echo Jalali::now()->subYears(1);
+
+echo Jalali::now()->addMonths(2);
+echo Jalali::now()->subMonths(1);
+
 echo Jalali::now()->addWeeks(3);
 echo Date::now()->subWeeks(3);
 

@@ -277,9 +277,42 @@ abstract class DateAbstract extends DateTime
      * @param int $value
      * @return $this
      */
-    public function subDays($value = 1)
+    public function subYears($value = 1)
     {
-        $this->addDays(-1 * $value);
+        $this->addYears(-1 * $value);
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addYears($value = 1)
+    {
+        $this->modify((int) $value." year");
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function subMonths($value = 1)
+    {
+        $this->addMonths(-1 * $value);
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addMonths($value = 1)
+    {
+        $this->modify((int) $value." month");
 
         return $this;
     }
@@ -290,7 +323,7 @@ abstract class DateAbstract extends DateTime
      */
     public function subWeeks($value = 1)
     {
-        $this->modify((int) $value." week");
+        $this->addWeeks(-1 * $value);
 
         return $this;
     }
@@ -302,6 +335,17 @@ abstract class DateAbstract extends DateTime
     public function addWeeks($value = 1)
     {
         $this->modify((int) $value." week");
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function subDays($value = 1)
+    {
+        $this->addDays(-1 * $value);
 
         return $this;
     }
