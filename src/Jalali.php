@@ -346,6 +346,30 @@ class Jalali extends DateAbstract
      * @param int $value
      * @return $this
      */
+    public function subWeeks($value = 1)
+    {
+        parent::subWeeks($value);
+        $this->refreshJalali();
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addWeeks($value = 1)
+    {
+        parent::addWeeks($value);
+        $this->refreshJalali();
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
     public function subDays($value = 1)
     {
         parent::subDays($value);

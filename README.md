@@ -71,6 +71,9 @@ Consider you can send negative number to ```add*``` methods, instead of using ``
 echo Jalali::now()->startOfDay();
 echo Jalali::now()->endOfDay();
 
+echo Jalali::now()->addWeeks(3);
+echo Date::now()->subWeeks(3);
+
 echo Jalali::now()->addDays(1);
 echo Jalali::now()->subDays(5);
 
@@ -147,7 +150,3 @@ Add below codes to ```aliases``` array in ```app.php``` config file.
 'Jalali' => Date\Jalali::class,
 'Date'   => Date\Date::class
 ```
-
-## Road map
-
-* Add diff methods such as ```diffInDay```

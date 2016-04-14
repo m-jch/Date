@@ -288,6 +288,28 @@ abstract class DateAbstract extends DateTime
      * @param int $value
      * @return $this
      */
+    public function subWeeks($value = 1)
+    {
+        $this->modify((int) $value." week");
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
+    public function addWeeks($value = 1)
+    {
+        $this->modify((int) $value." week");
+
+        return $this;
+    }
+
+    /**
+     * @param int $value
+     * @return $this
+     */
     public function addDays($value = 1)
     {
         $this->modify((int) $value." day");
