@@ -119,6 +119,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this == $dt;
     }
+
     /**
      * Determines if the instance is equal to another
      *
@@ -132,6 +133,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this->eq($dt);
     }
+
     /**
      * Determines if the instance is not equal to another
      *
@@ -143,6 +145,7 @@ abstract class DateAbstract extends DateTime
     {
         return !$this->eq($dt);
     }
+
     /**
      * Determines if the instance is not equal to another
      *
@@ -156,6 +159,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this->ne($dt);
     }
+
     /**
      * Determines if the instance is greater (after) than another
      *
@@ -167,6 +171,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this > $dt;
     }
+
     /**
      * Determines if the instance is greater (after) than another
      *
@@ -180,6 +185,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this->gt($dt);
     }
+
     /**
      * Determines if the instance is greater (after) than or equal to another
      *
@@ -191,6 +197,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this >= $dt;
     }
+
     /**
      * Determines if the instance is greater (after) than or equal to another
      *
@@ -204,6 +211,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this->gte($dt);
     }
+
     /**
      * Determines if the instance is less (before) than another
      *
@@ -215,6 +223,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this < $dt;
     }
+
     /**
      * Determines if the instance is less (before) than another
      *
@@ -228,6 +237,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this->lt($dt);
     }
+
     /**
      * Determines if the instance is less (before) or equal to another
      *
@@ -239,6 +249,7 @@ abstract class DateAbstract extends DateTime
     {
         return $this <= $dt;
     }
+
     /**
      * Determines if the instance is less (before) or equal to another
      *
