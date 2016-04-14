@@ -121,8 +121,17 @@ $date1->lte($date2);
 
 #### Differences
 
+You can not send first parameter or send it null, for calculate difference from current datetime.
+
+If second parameter is true, return base on absolute, otherwise base on difference, default is true
+
+We're not sure about ```diffInYears```, ```diffInMonths```, ```diffInWeeks``` and ```diffInDays``` in Jalali date, if you have any bug, please report it.
+
 ```php
-// If second parameter is true, return base on absolute, otherwise base on difference, default is true
+$date1->diffInYears($date2);
+$date1->diffInMonths($date2);
+$date1->diffInWeeks($date2);
+$date1->diffInDays();
 $date1->diffInHours($date2);
 $date1->diffInMinutes($date2, true);
 $date1->diffInSeconds($date2, false);

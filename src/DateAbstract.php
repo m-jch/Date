@@ -16,6 +16,60 @@ abstract class DateAbstract extends DateTime
     protected $leap;
 
     /**
+     * Get the difference in years
+     *
+     * @param DateAbstract|null $dt
+     * @param bool $abs Get the absolute of the difference
+     * @return int
+     */
+    public function diffInYears(DateAbstract $dt = null, $abs = true)
+    {
+        $dt = $dt ?: static::now();
+
+        return (int) $this->diff($dt, $abs)->format('%r%y');
+    }
+
+    /**
+     * Get the difference in months
+     *
+     * @param DateAbstract|null $dt
+     * @param bool $abs Get the absolute of the difference
+     * @return int
+     */
+    public function diffInMonths(DateAbstract $dt = null, $abs = true)
+    {
+        $dt = $dt ?: static::now();
+
+        return $this->diffInYears($dt, $abs) * 12 + (int) $this->diff($dt, $abs)->format('%r%m');
+    }
+
+    /**
+     * Get the difference in weeks
+     *
+     * @param DateAbstract|null $dt
+     * @param bool $abs Get the absolute of the difference
+     * @return int
+     */
+    public function diffInWeeks(DateAbstract $dt = null, $abs = true)
+    {
+        return (int) ($this->diffInDays($dt, $abs) / 7);
+    }
+
+    /**
+     * Get the difference in days
+     *
+     * @param DateAbstract|null $dt
+     * @param bool $abs Get the absolute of the difference
+     * @return int
+     */
+    public function diffInDays(DateAbstract $dt = null, $abs = true)
+    {
+        $dt = $dt ?: static::now();
+
+        return (int) $this->diff($dt, $abs)->format('%r%a');
+    }
+
+    /**
      * Get the difference in hours
      *
      * @param DateAbstract|null $dt
@@ -240,7 +294,7 @@ abstract class DateAbstract extends DateTime
 
         return $this;
     }
-    
+
     /**
      * @param int $value
      * @return $this
