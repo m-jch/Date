@@ -265,6 +265,39 @@ abstract class DateAbstract extends DateTime
     }
 
     /**
+     * Set the date and time all together
+     *
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     *
+     * @return static
+     */
+    public function setDateTime($year, $month, $day, $hour, $minute, $second = 0)
+    {
+        return $this->setDate($year, $month, $day)->setTime($hour, $minute, $second);
+    }
+
+    /**
+     * @return $this
+     */
+    public function startOfMonth()
+    {
+        return $this->setDateTime($this->year, $this->month, 1, 0, 0, 0);
+    }
+
+    /**
+     * @return $this
+     */
+    public function endOfMonth()
+    {
+        return $this->setDateTime($this->year, $this->month, $this->daysInMonth, 0, 0, 0);
+    }
+
+    /**
      * @return $this
      */
     public function startOfDay()

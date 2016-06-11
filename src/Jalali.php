@@ -95,6 +95,8 @@ class Jalali extends DateAbstract
 
         list($year, $month, $day) = $this->jalaliToGregorian($year, $month, $day);
         parent::setDate($year, $month, $day);
+
+        return $this;
     }
 
     /**
@@ -188,7 +190,8 @@ class Jalali extends DateAbstract
             case array_key_exists($name, $formats = array(
                 'year' => 'Y',
                 'month' => 'm',
-                'day' => 'd'
+                'day' => 'd',
+                'daysInMonth' => 't'
             )):
                 return $this->format($formats[$name]);
                 break;

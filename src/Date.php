@@ -31,4 +31,22 @@ class Date extends DateAbstract
     {
         return $this->toJalali();
     }
+
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        switch (true) {
+            case array_key_exists($name, $formats = array(
+                'year' => 'Y',
+                'month' => 'm',
+                'day' => 'd',
+                'daysInMonth' => 't'
+            )):
+                return $this->format($formats[$name]);
+                break;
+        }
+    }
 }
