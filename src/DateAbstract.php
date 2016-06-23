@@ -554,6 +554,19 @@ abstract class DateAbstract extends DateTime
     }
 
     /**
+     * Create a DateAbstract instance from a timestamp.
+     *
+     * @param int $timestamp
+     * @param \DateTimeZone|string|null $tz
+     *
+     * @return static
+     */
+    public static function createFromTimestamp($timestamp, $tz = null)
+    {
+        return static::now($tz)->setTimestamp($timestamp);
+    }
+
+    /**
     * Creates a DateTimeZone from a string, DateTimeZone or integer offset.
     *
     * @param \DateTimeZone|string|int|null $object

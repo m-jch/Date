@@ -8,7 +8,29 @@ class Date extends DateAbstract
 {
     public function __construct($time = null, $tz = null)
     {
-        parent::__construct($time, self::safeCreateDateTimeZone($tz));
+        if ($this->newFromTimestamp($time)) {
+            parent::__construct(null, self::safeCreateDateTimeZone($tz));
+            $this->setTimestamp($time);
+        } else {
+            parent::__construct($time, self::safeCreateDateTimeZone($tz));
+        }
+    }
+
+    /**
+     * Check if class initialize from timestamp
+     *
+     * @param mixed $time
+     * @return bool
+     */
+    protected function newFromTimestamp($time)
+    {
+        $timestampRegex = '/\A\d+\z/';
+        preg_match($timestampRegex, $time, $output);
+        if (!empty($output)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

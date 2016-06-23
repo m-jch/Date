@@ -114,6 +114,7 @@ class Jalali extends DateAbstract
         $dateRegex = '/(\d{1,4})[\/|-](\d{1,2})[\/|-](\d{1,2})/';
         $timeDetailRegex = '/(\d{1,2}):(\d{1,2}):(\d{1,2})/';
         $timeRegex = '/(\d{1,2}):(\d{1,2})/';
+        $timestampRegex = '/\A\d+\z/';
 
         preg_match($datetimeDetailRegex, $time, $output);
         if (!empty($output)) {
@@ -145,6 +146,13 @@ class Jalali extends DateAbstract
         preg_match($timeRegex, $time, $output);
         if (!empty($output)) {
             $this->setTime($output[1], $output[2]);
+            $this->refreshJalali();
+            return;
+        }
+
+        preg_match($timestampRegex, $time, $output);
+        if (!empty($output)) {
+            $this->setTimestamp($output[0]);
             $this->refreshJalali();
             return;
         }

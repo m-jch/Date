@@ -149,6 +149,22 @@ $date1->diffInMinutes($date2, true);
 $date1->diffInSeconds($date2, false);
 ```
 
+#### Timestamp
+
+```php
+// Create from timestamp
+$date = new Jalali(1466664181);
+$date = new Date(1466664181);
+$date = Jalali::createFromTimestamp(1466664181);
+
+// Get timestamp
+$date->getTimestamp();
+$date->format('U');
+
+// Set timestamp
+$date->setTimestamp(1466664181);
+```
+
 ## Frameworks
 
 ### Laravel5
