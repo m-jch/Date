@@ -1,11 +1,11 @@
-# Date [in development]
+# Date
 
 Fix all needs to date in php
 
 ## Install
 
 ```
-composer require m-jch/date:dev-master --prefer-dist
+composer require m-jch/date:1.0.0 --prefer-dist
 ```
 
 ## Tutorial
