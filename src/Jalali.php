@@ -520,4 +520,14 @@ class Jalali extends DateAbstract
 
         return $this;
     }
+
+    /**
+     * Equivalent to new Jalali()
+     *
+     * @return \Date\Jalali
+     */
+    public static function make($time)
+    {
+        return new Jalali($time);
+    }
 }

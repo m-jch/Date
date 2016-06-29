@@ -42,6 +42,11 @@ $date->format('Y-m-d H:i:s');
 
 echo new Jalali('1395-04-10');
 
+// You can use make static method instead of new instance
+// Below examples has same results
+$date = (new Jalali('1395/04/10 23:10:05'))->subDays(4);
+$date = Jalali::make('1395/04/10 23:10:05')->subDays(4);
+
 echo Jalali::now();
 echo Jalali::yesterday();
 echo Jalali::tomorrow();

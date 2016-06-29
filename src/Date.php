@@ -71,4 +71,14 @@ class Date extends DateAbstract
                 break;
         }
     }
+
+    /**
+     * Equivalent to new Date()
+     *
+     * @return \Date\Date
+     */
+    public static function make($time)
+    {
+        return new Date($time);
+    }
 }
