@@ -133,6 +133,7 @@ class Jalali extends DateAbstract
         preg_match($dateRegex, $time, $output);
         if (!empty($output)) {
             $this->setDate($output[1], $output[2], $output[3]);
+            $this->setTime(0, 0, 0);
             return;
         }
 
