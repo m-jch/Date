@@ -4,14 +4,10 @@ Fix all needs to date in php
 
 ## Install
 
-```
-composer require m-jch/date:1.0.0 --prefer-dist
-```
-
-Or add below as new line to ```require``` section in ```composer.json```:
+Add below line to ```require``` section in ```composer.json```:
 
 ```
-"m-jch/date" : "1.0.0"
+"m-jch/date" : "~1"
 ```
 
 ## Tutorial
