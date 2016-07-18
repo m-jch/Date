@@ -10,6 +10,8 @@ Add below line to ```require``` section in ```composer.json```:
 "m-jch/date" : "~1"
 ```
 
+Run ```composer update```
+
 ## Tutorial
 
 This package contains 2 class, ```Jalali``` and ```Date```. ```Jalali``` class responsible for Jalali (shamsi) date time and ```Date``` class responsible for Gregorian date time.
