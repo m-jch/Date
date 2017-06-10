@@ -265,6 +265,62 @@ abstract class DateAbstract extends DateTime
     }
 
     /**
+     * Determines if the instance is between start and end dates
+     *
+     * @param DateAbstract $startDate
+     * @param DateAbstract $endDate
+     *
+     * @return bool
+     */
+    public function bw(DateAbstract $startDate, DateAbstract $endDate)
+    {
+        return $this->gt($startDate) && $this->lt($endDate);
+    }
+
+    /**
+     * Determines if the instance is between start and end dates
+     *
+     * @param DateAbstract $startDate
+     * @param DateAbstract $endDate
+     *
+     * @see bw()
+     *
+     * @return bool
+     */
+    public function between(DateAbstract $startDate, DateAbstract $endDate)
+    {
+        return $this->bw($startDate, $endDate);
+    }
+
+    /**
+     * Determines if the instance is between start and end dates or equals to
+     *
+     * @param DateAbstract $startDate
+     * @param DateAbstract $endDate
+     *
+     * @return bool
+     */
+    public function bwe(DateAbstract $startDate, DateAbstract $endDate)
+    {
+        return $this->gte($startDate) && $this->lte($endDate);
+    }
+
+    /**
+     * Determines if the instance is between start and end dates or equals to
+     *
+     * @param DateAbstract $startDate
+     * @param DateAbstract $endDate
+     *
+     * @see bwe()
+     *
+     * @return bool
+     */
+    public function betweenEqual(DateAbstract $startDate, DateAbstract $endDate)
+    {
+        return $this->bwe($startDate, $endDate);
+    }
+
+    /**
      * Set the date and time all together
      *
      * @param int $year

@@ -140,6 +140,12 @@ $date1->lt($date2);
 
 $date1->lessThanOrEqualTo($date2);
 $date1->lte($date2);
+
+$now->between($date1, $date2);
+$now->bw($date1, $date2);
+
+$now->betweenEqual($date1, $date2);
+$now->bwe($date1, $date2);
 ```
 
 #### Differences
