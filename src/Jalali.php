@@ -531,4 +531,20 @@ class Jalali extends DateAbstract
     {
         return new Jalali($time);
     }
+
+    /**
+     * Create a DateAbstract instance from a timestamp.
+     *
+     * @param int $timestamp
+     * @param \DateTimeZone|string|null $tz
+     *
+     * @return static
+     */
+    public static function createFromTimestamp($timestamp, $tz = null)
+    {
+        $date = static::now($tz)->setTimestamp($timestamp);
+        $date->refreshJalali();
+
+        return $date;
+    }
 }
