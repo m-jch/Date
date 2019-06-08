@@ -249,7 +249,7 @@ class Jalali extends DateAbstract
                     break;
 
                 case 'j':
-                    $v = sprintf('%01d', $this->jMonth);
+                    $v = sprintf('%01d', $this->jDay);
                     break;
 
                 case 'z':
