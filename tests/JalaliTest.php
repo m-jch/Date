@@ -56,4 +56,11 @@ class JalaliTest extends TestCase
 
         $this->assertSame('1466664492', $date->format('U'));
     }
+
+    public function testFrotmatJ()
+    {
+        $date = new Jalali('1398/1/5', 'Asia/tehran');
+
+        $this->assertSame('5', $date->format('j'));
+    }
 }
